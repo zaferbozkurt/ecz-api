@@ -31,6 +31,17 @@ export default class WalmartItemRequests {
    * Registers a handler for a particular api. This allows JavaScript to handle a request from native.
    * @param handler The handler function, taking a single parameter being the data of the request and returning a Promise. Implementer of the handler should either resolve the promise with an object being the response data (if any) or reject the promise with an Error
    */
+  registerClickDetailRequestHandler(handler: Function): Promise<any> {
+    this._bridge.registerRequestHandler(
+      'com.ecz.ern.api.request.clickDetail',
+      handler,
+    );
+  }
+
+  /**
+   * Registers a handler for a particular api. This allows JavaScript to handle a request from native.
+   * @param handler The handler function, taking a single parameter being the data of the request and returning a Promise. Implementer of the handler should either resolve the promise with an object being the response data (if any) or reject the promise with an Error
+   */
   registerFindItemsRequestHandler(handler: Function): Promise<any> {
     this._bridge.registerRequestHandler(
       'com.ecz.ern.api.request.findItems',
@@ -71,6 +82,17 @@ export default class WalmartItemRequests {
   addUser(item: any, timeout: number): Promise<any> {
     return this._bridge.sendRequest('com.ecz.ern.api.request.addUser', {
       data: item,
+      timeout,
+    });
+  }
+
+  /**
+   * click detail
+   * @param timeout timeout in milliseconds
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:com.ecz.ern.model/Item }
+   */
+  clickDetail(timeout: number): Promise<any> {
+    return this._bridge.sendRequest('com.ecz.ern.api.request.clickDetail', {
       timeout,
     });
   }

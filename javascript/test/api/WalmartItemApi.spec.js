@@ -50,6 +50,16 @@ describe('WalmartItemApi', function () {
     });
   });
 
+  describe('clickDetail', function () {
+    it('should send request clickDetail successfully', () => {
+      // uncomment below and update the code to test clickDetail
+      //return requests.clickDetail().then(response => {
+      //  if (error) throw error;
+      //  expect(response).to.be();
+      //});
+    });
+  });
+
   describe('findItems', function () {
     it('should send request findItems successfully', () => {
       // uncomment below and update the code to test findItems

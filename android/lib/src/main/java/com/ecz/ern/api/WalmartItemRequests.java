@@ -47,6 +47,12 @@ final class WalmartItemRequests implements WalmartItemApi.Requests {
     }
 
     @Override
+    public RequestHandlerHandle registerClickDetailRequestHandler(
+            @NonNull final ElectrodeBridgeRequestHandler<None, Item> handler) {
+        return new RequestHandlerProcessor<>(REQUEST_CLICK_DETAIL, None.class, Item.class, handler).execute();
+    }
+
+    @Override
     public RequestHandlerHandle registerFindItemsRequestHandler(
             @NonNull final ElectrodeBridgeRequestHandler<Integer, List<Item>> handler) {
         return new RequestHandlerProcessor<>(REQUEST_FIND_ITEMS, Integer.class, (Class) Item.class, handler).execute();
@@ -70,6 +76,12 @@ final class WalmartItemRequests implements WalmartItemApi.Requests {
             Item item,
             @NonNull final ElectrodeBridgeResponseListener<Boolean> responseListener) {
         new RequestProcessor<>(REQUEST_ADD_USER, item, Boolean.class, responseListener).execute();
+    }
+
+    @Override
+    public void clickDetail(
+            @NonNull final ElectrodeBridgeResponseListener<Item> responseListener) {
+        new RequestProcessor<>(REQUEST_CLICK_DETAIL, null, Item.class, responseListener).execute();
     }
 
     @Override

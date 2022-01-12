@@ -16,6 +16,14 @@
         return requestHandlerProcessor.execute()
     }
 
+    public override func registerClickDetailRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
+        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: WalmartItemAPI.kRequestClickDetail,
+                                                                       reqClass: None.self,
+                                                                       respClass: Item.self,
+                                                                       requestCompletionHandler: handler)
+        return requestHandlerProcessor.execute()
+    }
+
     public override func registerFindItemsRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: WalmartItemAPI.kRequestFindItems,
                                                                        reqClass: Int.self,
@@ -37,6 +45,10 @@
     }
 
     public override func unregisterAddUserRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+        return ElectrodeBridgeHolder.unregisterRequestHandler(with: uuid)
+    }
+
+    public override func unregisterClickDetailRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         return ElectrodeBridgeHolder.unregisterRequestHandler(with: uuid)
     }
 
@@ -67,6 +79,18 @@
             respClass: Bool.self,
             responseItemType: nil,
             responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? Bool, errorMessage) }
+        )
+
+        requestProcessor.execute()
+    }
+
+    public override func clickDetail( responseCompletionHandler: @escaping (Item?, ElectrodeFailureMessage?) -> Void) {
+        let requestProcessor = ElectrodeRequestProcessor<None, Item, Any>(
+            requestName: WalmartItemAPI.kRequestClickDetail,
+            requestPayload: nil,
+            respClass: Item.self,
+            responseItemType: nil,
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? Item, errorMessage) }
         )
 
         requestProcessor.execute()
@@ -116,6 +140,14 @@ public class WalmartItemRequests: WalmartItemAPIRequests {
         return requestHandlerProcessor.execute()
     }
 
+    public override func registerClickDetailRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
+        let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: WalmartItemAPI.kRequestClickDetail,
+                                                                       reqClass: None.self,
+                                                                       respClass: Item.self,
+                                                                       requestCompletionHandler: handler)
+        return requestHandlerProcessor.execute()
+    }
+
     public override func registerFindItemsRequestHandler(handler: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         let requestHandlerProcessor = ElectrodeRequestHandlerProcessor(requestName: WalmartItemAPI.kRequestFindItems,
                                                                        reqClass: Int.self,
@@ -137,6 +169,10 @@ public class WalmartItemRequests: WalmartItemAPIRequests {
     }
 
     public override func unregisterAddUserRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+        return ElectrodeBridgeHolder.unregisterRequestHandler(with: uuid)
+    }
+
+    public override func unregisterClickDetailRequestHandler(uuid: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         return ElectrodeBridgeHolder.unregisterRequestHandler(with: uuid)
     }
 
@@ -167,6 +203,18 @@ public class WalmartItemRequests: WalmartItemAPIRequests {
             respClass: Bool.self,
             responseItemType: nil,
             responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? Bool, errorMessage) }
+        )
+
+        requestProcessor.execute()
+    }
+
+    public override func clickDetail( responseCompletionHandler: @escaping (Item?, ElectrodeFailureMessage?) -> Void) {
+        let requestProcessor = ElectrodeRequestProcessor<None, Item, Any>(
+            requestName: WalmartItemAPI.kRequestClickDetail,
+            requestPayload: nil,
+            respClass: Item.self,
+            responseItemType: nil,
+            responseCompletionHandler: { data, errorMessage in responseCompletionHandler(data as? Item, errorMessage) }
         )
 
         requestProcessor.execute()
