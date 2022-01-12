@@ -59,6 +59,57 @@
         }
       }
     },
+    "/users": {
+      "get": {
+        "tags": ["WalmartItem"],
+        "description": "Returns all users from the system",
+        "operationId": "getUsers",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Item response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Item"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["WalmartItem"],
+        "description": "Creates a User Item in the store.",
+        "operationId": "addUser",
+        "parameters": [
+          {
+            "name": "item",
+            "in": "body",
+            "description": "Item to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Item"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
     "event/itemAdded": {
       "event": {
         "tags": ["WalmartItem"],

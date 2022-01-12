@@ -40,10 +40,30 @@ describe('WalmartItemApi', function () {
     });
   });
 
+  describe('addUser', function () {
+    it('should send request addUser successfully', () => {
+      // uncomment below and update the code to test addUser
+      //return requests.addUser(item: any).then(response => {
+      //  if (error) throw error;
+      //  expect(response).to.be();
+      //});
+    });
+  });
+
   describe('findItems', function () {
     it('should send request findItems successfully', () => {
       // uncomment below and update the code to test findItems
       //return requests.findItems(opts: any).then(response => {
+      //  if (error) throw error;
+      //  expect(response).to.be();
+      //});
+    });
+  });
+
+  describe('getUsers', function () {
+    it('should send request getUsers successfully', () => {
+      // uncomment below and update the code to test getUsers
+      //return requests.getUsers(opts: any).then(response => {
       //  if (error) throw error;
       //  expect(response).to.be();
       //});

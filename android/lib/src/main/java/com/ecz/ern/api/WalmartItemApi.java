@@ -66,19 +66,35 @@ public final class WalmartItemApi {
 
     public interface Requests {
         String REQUEST_ADD_ITEM = "com.ecz.ern.api.request.addItem";
+        String REQUEST_ADD_USER = "com.ecz.ern.api.request.addUser";
         String REQUEST_FIND_ITEMS = "com.ecz.ern.api.request.findItems";
+        String REQUEST_GET_USERS = "com.ecz.ern.api.request.getUsers";
 
         RequestHandlerHandle registerAddItemRequestHandler(
                 @NonNull final ElectrodeBridgeRequestHandler<Item, Boolean> handler);
 
+        RequestHandlerHandle registerAddUserRequestHandler(
+                @NonNull final ElectrodeBridgeRequestHandler<Item, Boolean> handler);
+
         RequestHandlerHandle registerFindItemsRequestHandler(
+                @NonNull final ElectrodeBridgeRequestHandler<Integer, List<Item>> handler);
+
+        RequestHandlerHandle registerGetUsersRequestHandler(
                 @NonNull final ElectrodeBridgeRequestHandler<Integer, List<Item>> handler);
 
         void addItem(
                 Item item,
                 @NonNull final ElectrodeBridgeResponseListener<Boolean> responseListener);
 
+        void addUser(
+                Item item,
+                @NonNull final ElectrodeBridgeResponseListener<Boolean> responseListener);
+
         void findItems(
+                Integer limit,
+                @NonNull final ElectrodeBridgeResponseListener<List<Item>> responseListener);
+
+        void getUsers(
                 Integer limit,
                 @NonNull final ElectrodeBridgeResponseListener<List<Item>> responseListener);
     }

@@ -41,9 +41,21 @@ final class WalmartItemRequests implements WalmartItemApi.Requests {
     }
 
     @Override
+    public RequestHandlerHandle registerAddUserRequestHandler(
+            @NonNull final ElectrodeBridgeRequestHandler<Item, Boolean> handler) {
+        return new RequestHandlerProcessor<>(REQUEST_ADD_USER, Item.class, Boolean.class, handler).execute();
+    }
+
+    @Override
     public RequestHandlerHandle registerFindItemsRequestHandler(
             @NonNull final ElectrodeBridgeRequestHandler<Integer, List<Item>> handler) {
         return new RequestHandlerProcessor<>(REQUEST_FIND_ITEMS, Integer.class, (Class) Item.class, handler).execute();
+    }
+
+    @Override
+    public RequestHandlerHandle registerGetUsersRequestHandler(
+            @NonNull final ElectrodeBridgeRequestHandler<Integer, List<Item>> handler) {
+        return new RequestHandlerProcessor<>(REQUEST_GET_USERS, Integer.class, (Class) Item.class, handler).execute();
     }
 
     @Override
@@ -54,9 +66,23 @@ final class WalmartItemRequests implements WalmartItemApi.Requests {
     }
 
     @Override
+    public void addUser(
+            Item item,
+            @NonNull final ElectrodeBridgeResponseListener<Boolean> responseListener) {
+        new RequestProcessor<>(REQUEST_ADD_USER, item, Boolean.class, responseListener).execute();
+    }
+
+    @Override
     public void findItems(
             Integer limit,
             @NonNull final ElectrodeBridgeResponseListener<List<Item>> responseListener) {
         new RequestProcessor<>(REQUEST_FIND_ITEMS, limit, (Class) List.class, Item.class, responseListener).execute();
+    }
+
+    @Override
+    public void getUsers(
+            Integer limit,
+            @NonNull final ElectrodeBridgeResponseListener<List<Item>> responseListener) {
+        new RequestProcessor<>(REQUEST_GET_USERS, limit, (Class) List.class, Item.class, responseListener).execute();
     }
 }

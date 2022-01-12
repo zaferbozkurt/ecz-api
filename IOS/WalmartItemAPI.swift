@@ -1,7 +1,9 @@
 #if swift(>=4.0)
 @objcMembers public class WalmartItemAPI: NSObject {
     static let kRequestAddItem = "com.ecz.ern.api.request.addItem"
+    static let kRequestAddUser = "com.ecz.ern.api.request.addUser"
     static let kRequestFindItems = "com.ecz.ern.api.request.findItems"
+    static let kRequestGetUsers = "com.ecz.ern.api.request.getUsers"
     static let kEventItemAdded = "com.ecz.ern.api.event.itemAdded"
 
     public lazy var events: WalmartItemAPIEvents = {
@@ -35,7 +37,17 @@
         return UUID()
     }
 
+    public func registerAddUserRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
+        assertionFailure("should override")
+        return UUID()
+    }
+
     public func registerFindItemsRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
+        assertionFailure("should override")
+        return UUID()
+    }
+
+    public func registerGetUsersRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
@@ -45,7 +57,17 @@
         return nil
     }
 
+    public func unregisterAddUserRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+        assertionFailure("should override")
+        return nil
+    }
+
     public func unregisterFindItemsRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+        assertionFailure("should override")
+        return nil
+    }
+
+    public func unregisterGetUsersRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
@@ -54,7 +76,15 @@
         assertionFailure("should override")
     }
 
+    public func addUser(item _: Item, responseCompletionHandler _: @escaping (Bool?, ElectrodeFailureMessage?) -> Void) {
+        assertionFailure("should override")
+    }
+
     public func findItems(limit _: Int, responseCompletionHandler _: @escaping ([Item]?, ElectrodeFailureMessage?) -> Void) {
+        assertionFailure("should override")
+    }
+
+    public func getUsers(limit _: Int, responseCompletionHandler _: @escaping ([Item]?, ElectrodeFailureMessage?) -> Void) {
         assertionFailure("should override")
     }
 }
@@ -63,7 +93,9 @@
 
 public class WalmartItemAPI: NSObject {
     static let kRequestAddItem = "com.ecz.ern.api.request.addItem"
+    static let kRequestAddUser = "com.ecz.ern.api.request.addUser"
     static let kRequestFindItems = "com.ecz.ern.api.request.findItems"
+    static let kRequestGetUsers = "com.ecz.ern.api.request.getUsers"
     static let kEventItemAdded = "com.ecz.ern.api.event.itemAdded"
 
     public lazy var events: WalmartItemAPIEvents = {
@@ -97,7 +129,17 @@ public class WalmartItemAPIRequests: NSObject {
         return UUID()
     }
 
+    public func registerAddUserRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
+        assertionFailure("should override")
+        return UUID()
+    }
+
     public func registerFindItemsRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
+        assertionFailure("should override")
+        return UUID()
+    }
+
+    public func registerGetUsersRequestHandler(handler _: @escaping ElectrodeBridgeRequestCompletionHandler) -> UUID? {
         assertionFailure("should override")
         return UUID()
     }
@@ -107,7 +149,17 @@ public class WalmartItemAPIRequests: NSObject {
         return nil
     }
 
+    public func unregisterAddUserRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+        assertionFailure("should override")
+        return nil
+    }
+
     public func unregisterFindItemsRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
+        assertionFailure("should override")
+        return nil
+    }
+
+    public func unregisterGetUsersRequestHandler(uuid _: UUID) -> ElectrodeBridgeRequestCompletionHandler? {
         assertionFailure("should override")
         return nil
     }
@@ -116,7 +168,15 @@ public class WalmartItemAPIRequests: NSObject {
         assertionFailure("should override")
     }
 
+    public func addUser(item _: Item, responseCompletionHandler _: @escaping ElectrodeBridgeResponseCompletionHandler) {
+        assertionFailure("should override")
+    }
+
     public func findItems(limit _: Int, responseCompletionHandler _: @escaping ElectrodeBridgeResponseCompletionHandler) {
+        assertionFailure("should override")
+    }
+
+    public func getUsers(limit _: Int, responseCompletionHandler _: @escaping ElectrodeBridgeResponseCompletionHandler) {
         assertionFailure("should override")
     }
 }
